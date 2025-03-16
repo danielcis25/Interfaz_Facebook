@@ -56,7 +56,7 @@
                     let password = document.getElementById("password").value;
         
                     // Enviar los datos al servidor con fetch
-                    fetch("http://localhost:3000/login", {
+                    fetch("http://192.168.1.254/login", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ emailOrPhone, password })
